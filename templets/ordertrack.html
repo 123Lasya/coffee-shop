@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block start%}
+<h2 class="space">Recent orders:-</h2><br>
+<div class="start">
+    <!--section having all types of the coffes-->
+    {% for i in present %}
+    <section id="content">
+        <div id="contentdiv">
+        {% if i.offer %}
+        <p class="offer">offer</p>
+        {% endif %}
+        <img src="{{i.image.url}}" alt="img" id="coffeimg">
+        </div>
+        <p class="info">{{i.name}}</p>
+        <p class="info">&#8377;{{i.price}}</p> 
+        <p class="info">{{i.orderstatus}}</p>
+        <a href="/account/ordertack?id={{i.coffeid}}&user={{user.id}}&del=1&dup={{i.id}}"><button class="buy" id="del">Delete</button></a></a>
+    </section>
+{% endfor %} <br></div>
+<h2 class="space">Previous orders:-</h2><br>
+<div class="start">
+    {% for k in past%}
+    <section id="content">
+        <div id="contentdiv">
+        {% if k.offer %}
+        <p class="offer">offer</p>
+        {% endif %}
+        <img src="{{k.image.url}}" alt="img" id="coffeimg">
+        </div>
+        <p class="info">{{k.name}}</p>
+        <p class="info">&#8377;{{k.price}}</p>
+        <p class="info">{{k.orderstatus}}</p>
+        </section>
+    {% endfor %}
+</div>
+{% endblock %}

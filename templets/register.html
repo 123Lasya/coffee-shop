@@ -1,0 +1,22 @@
+
+{% extends 'base.html'%}
+{% load static%}
+{% block start%}
+<div id="buyerinfo">
+<div id="conformimg"></div>
+<form action="register" id="buyerform" method="post">
+    {% csrf_token %}
+    <h2>Sign Up:-</h2>
+    <input type="text" placeholder="First name"  name="firstname"   class="appborder" required>
+    <input type="text" placeholder="Last name"  name="lastname"   class="appborder">
+    <input type="text" placeholder="User Name"   name="username"  class="appborder">
+    <input type="email" placeholder="Email id"   name="emailid"   class="appborder">
+    <input type="password" placeholder="Password"  name="password"   class="appborder" required>
+    <input type="text" placeholder="Address"    name="address"   class="appborder" required>
+    <input type="tel" placeholder="Phone Number" name="phonenumber" id="pass"  class="appborder" required>
+    <input class="buyer-1" type="submit" value="Submit">
+    {% for i in messages %}
+    <p class="center">{{i}}</p>
+    {% endfor %}
+</form></div>
+{% endblock %}

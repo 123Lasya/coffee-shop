@@ -1,0 +1,31 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block start %}
+    <main>
+        {%if user.is_authenticated %}
+        <article><div id="mainimage"><h1 id="hello">Hello!  {{user.first_name}}</h1></div>
+        </article>
+        {%else%}
+        <article><div id="mainimage"></div>
+        {% endif %}
+        <br>
+        <div class="start">
+        <!--section having all types of the coffes-->
+        
+        {% for i in dict %}
+        <section id="content">
+            <a href="buy?id={{i.id}}" >
+            <div id="contentdiv">
+            {% if i.offer %}
+            <p class="offer">offer</p>
+            {% endif %}
+            <img src="{{i.image.url}}" alt="img" id="coffeimg">
+            </div>
+            <p class="info">{{i.name}}</p>
+            <p class="info">&#8377;{{i.price}}</p>
+            <button class="buy">BUY NOW</button></a>
+        </section>
+        {% endfor %}</div>
+    </main>
+{% endblock %}

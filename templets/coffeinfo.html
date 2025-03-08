@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block start %}
+<section>
+    <div id="coffeinfodiv">
+        <div>
+        {% if i.offer %}
+        <p class="offer apply">offer</p>
+        {% endif %}
+        <img src="{{i.image.url}}" alt="img" id="coffeinfoimage"><br>
+        </div>
+        <div id="coffeinfodiv2">
+        <h1>{{i.name}}</h1>
+        {% if i.offer %}
+        <p>&#8377;{{i.price}}(with offer)</p>
+        {% else %}
+        <p>&#8377;{{i.price}}</p>
+        {% endif %}
+        <p id="coffeinfop">{{i.decription}}</p>
+        {% if user.is_authenticated %}
+          <a href="account/cart?id={{i.id}}&user={{user.id}}"><button class="buy">Add To Cart</button></a>
+          <a href="/account/confirmorder?id={{i.id}}&user={{user.id}}"><button class="buy">BUY NOW</button></a>
+        {% else %}
+          <a href="buy"><button class="buy">Add To Cart</button></a>
+          <a href="buy"><button class="buy">BUY NOW</button></a>
+         {% for i in messages %}
+         <p id="loginmessage">please!,Log in to your account or create an account</p>
+         {% endfor %}
+        {% endif %} 
+        </div>
+    </div>
+</section>
+<p id="text">YOU MAY LIKE THIS:-</p>
+<div id="coffeextra">
+    {% for i in e %}
+        <section id="content">
+            <a href="/buy?id={{i.id}}">
+            <div id="contentdiv">
+            {% if i.offer %}
+            <p class="offer">offer</p>
+            {% endif %}
+            <img src="{{i.image.url}}" alt="img" id="coffeimg">
+            </div>
+            <p class="info">{{i.name}}</p>
+            <p class="info">&#8377;{{i.price}}</p>
+            <button class="buy">BUY NOW</button></a>
+        </section>
+    {% endfor %}
+</div>
+{% endblock %}

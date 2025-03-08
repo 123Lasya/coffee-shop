@@ -1,0 +1,23 @@
+
+{% extends 'base.html'%}
+{% load static%}
+{% block start%}
+<h2 class="space">Your Cart:-</h2>
+<div class="start">
+    <!--section having all types of the coffes-->
+    {% for i in d %}
+    <section id="content">
+        <a href="/buy?id={{i.coffeid}}" >
+        <div id="contentdiv">
+        {% if i.offer %}
+        <p class="offer">offer</p>
+        {% endif %}
+        <img src="{{i.image.url}}" alt="img" id="coffeimg">
+        </div>
+        <p class="info">{{i.name}}</p>
+        <p class="info">&#8377;{{i.price}}</p>
+        <button class="buy">BUY NOW</button></a><br>
+        <a href="/account/cart?id={{i.coffeid}}&user={{user.id}}&del=1"><button class="buy" id="del">Delete</button></a></a>
+    </section>
+    {% endfor %}</div>
+{% endblock %}

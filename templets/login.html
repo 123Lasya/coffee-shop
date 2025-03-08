@@ -1,0 +1,17 @@
+
+{% extends 'base.html'%}
+{% load static%}
+{% block start%}
+<div id="buyerinfo">
+<div id="conformimg"></div>
+<form action="login" id="buyerform" method="post">
+    {% csrf_token %}
+    <h2>Log In:-</h2>
+    <input type="text" placeholder="User Name" name="user_name" class="appborder" required>
+    <input type="password" placeholder="Password"  name="password" class="appborder" required>
+    <input class="buyer-1" type="submit" placeholder="Submit">
+    {% for i in messages %}
+    <p class="center">{{i}}</p>
+    {% endfor %}
+</form></div>
+{% endblock %}

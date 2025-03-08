@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block start%}
+<div id="buyerinfo">
+<div id="conformimg"></div>
+<form action="/account/confirmorder?id={{i.rc}}&user={{i.ru}}" id="buyerform" method="post">
+    {% csrf_token %}
+    <h3>Order Conformation:-</h3>
+    <input type="text" placeholder="Address" name="address" class="appborder" required>
+    <input type="tel" placeholder="Phone Number" name="phone" class="appborder" required>
+    <input type="number" placeholder="Number of Coffees" name="quantity"  class="appborder"required>
+    <button type="submit" id="buyer">Submit</button> 
+</form></div>
+{% endblock %} 
